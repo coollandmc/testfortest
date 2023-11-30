@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cabin:wght@500&family=Kanit&display=swap" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Coolland Beta</title>
+</head>
+
+<body>
+
+    <div id="header">
+        <a href="https://discord.gg/qqRkNrzRCb" class="lime-background" target="_blank">Discord</a>
+    </div>
+
+    <div id="menu">
+        <ul>
+            <li id="button-home" class="header-button" onclick="showHome()">Coolland SMP</li>
+            <li id="button-events" class="header-button" onclick="showEvents()">Coolland Events</li>
+        </ul>
+    </div>
+
+
+    <div id="content">
+        <div id="home">
+            <h1 id="home-title">Coolland SMP</h1>
+            <a href="https://coollandmain.github.io/coollandsmp" id="home-link" class="lime-background">Vise o Coolland SMP</a>
+            <h1 id="home-content">--FAQ--</h1>
+            <h2>Na kojoj verziji je Coolland sezona 9?</h2>
+            <p>Coolland sezona 9 je na 1.20.1 verziji.</p>
+
+            <h2>Koji je IP za Coolland?</h2>
+            <p>IP je COOLAND09.aternos.me</p>
+
+            <h2>Da li je server whitelistovan?</h2>
+            <p>Ne, Coolland nije whitelistovan.</p>
+
+            <h2>Da li Coolland podrzava TLauncher i ostale crackovane launchere?</h2>
+            <p>Da.</p>
+
+            <h2>Ne mogu da se connectujem na server, sta da uradim?</h2>
+            <p>Ukoliko ne mozete da se connectujete na Coolland moze da bude na nije online, ukoliko želite da neko upali server možete pingovati @ServerStart role na Coolland Discordu ili ako hoćete pristup da vi ga možete upaliti pitajte vlasnike.</p>
+        </div>
+
+        <div id="coolland-events" style="display: none;">
+            <h1 id="events-title">Coolland Events</h1>
+            <a href="https://coollandmain.github.io/coollandevents" id="events-link" class="lime-background">Vise o Coolland Events</a>
+            <p id="events-content">Server IP: COOLLANDEVENTS.aternos.me</p>
+            <h1><p id="events-content">Sledeći Coolland Event: Subota 2. Decembar 6PM</p></h1>
+            <h2><p id="events-content">1.0 Release:</p></h2>
+            <h2><p id="events-content">Coolland Events je na 1.20.1 verziji</p></h2>
+            <h3><p id="events-content">Dodato je:</p></h3>
+            <p id="events-content">-Nova mini-igra Tower Up</p>
+            <p id="events-content">-Novi voting</p>
+            <p id="events-content">-Bow Spleef je dodat</p>
+            <p id="events-content">-Sada se automatski kalkulisu votovi</p>
+            <p id="events-content">-Sada postoji border na Hunger Games-u</p>
+            <p id="events-content"><p id="events-content">Vise informacija na <a href="https://discord.com/channels/793533299095896134/795378067354288169/1172931242098958466" target="_blank">Coolland Discordu</a></p></p>
+        </div>
+    </div>
+
+
+    <div id="settings-icon" onclick="toggleSettings()">⚙️</div>
+
+<div id="settings-popup">
+    <label for="theme">Izaberite Temu:</label>
+    <select id="theme" onchange="changeTheme()">
+        <option value="dark">Crna Tema</option>
+        <option value="light">Svetla Tema</option>
+    </select>
+</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
