@@ -18,37 +18,38 @@ function toggleSettings() {
     settingsPopup.style.display = (settingsPopup.style.display === 'block') ? 'none' : 'block';
 }
 
-let startX = 0;
-let endX = 0;
+let touchStartX = 0;
+let touchEndX = 0;
 
-document.addEventListener('touchstart', handleTouchStart, false);
-document.addEventListener('touchmove', handleTouchMove, false);
+// Add a touchstart event listener to record the starting position of the touch
+document.addEventListener('touchstart', function (event) {
+    touchStartX = event.touches[0].clientX;
+}, false);
 
-function handleTouchStart(event) {
-    startX = event.touches[0].clientX;
-}
+// Add a touchmove event listener to continuously update the ending position of the touch
+document.addEventListener('touchmove', function (event) {
+    touchEndX = event.touches[0].clientX;
+}, false);
 
-function handleTouchMove(event) {
-    endX = event.touches[0].clientX;
-}
-
+// Add a touchend event listener to determine the direction of the swipe
 document.addEventListener('touchend', function () {
-    if (startX - endX > 50) {
+    if (touchStartX - touchEndX > 50) {
         // Swipe left, hide menu
         hideMenu();
-    } else if (endX - startX > 50) {
+    } else if (touchEndX - touchStartX > 50) {
         // Swipe right, show menu
         showMenu();
     }
 });
 
 function hideMenu() {
-    document.getElementById('menu').style.transform = 'translateX(-150px)';
+    document.getElementById('menu').classList.add('transformed');
 }
 
 function showMenu() {
-    document.getElementById('menu').style.transform = 'translateX(0)';
+    document.getElementById('menu').classList.remove('transformed');
 }
+
 
 
 function changeTheme() {
