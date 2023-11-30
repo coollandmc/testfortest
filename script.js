@@ -18,6 +18,39 @@ function toggleSettings() {
     settingsPopup.style.display = (settingsPopup.style.display === 'block') ? 'none' : 'block';
 }
 
+let startX = 0;
+let endX = 0;
+
+document.addEventListener('touchstart', handleTouchStart, false);
+document.addEventListener('touchmove', handleTouchMove, false);
+
+function handleTouchStart(event) {
+    startX = event.touches[0].clientX;
+}
+
+function handleTouchMove(event) {
+    endX = event.touches[0].clientX;
+}
+
+document.addEventListener('touchend', function () {
+    if (startX - endX > 50) {
+        // Swipe left, hide menu
+        hideMenu();
+    } else if (endX - startX > 50) {
+        // Swipe right, show menu
+        showMenu();
+    }
+});
+
+function hideMenu() {
+    document.getElementById('menu').style.transform = 'translateX(-150px)';
+}
+
+function showMenu() {
+    document.getElementById('menu').style.transform = 'translateX(0)';
+}
+
+
 function changeTheme() {
     var theme = document.getElementById('theme').value;
     document.body.style.backgroundColor = (theme === 'dark') ? 'black' : 'white';
