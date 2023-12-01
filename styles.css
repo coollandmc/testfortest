@@ -96,6 +96,10 @@ body {
 #menu.transformed {
     transform: translateX(-150px);
 }
+#content.content-transformed {
+    transform: translateX(-100px);
+    transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
 
 /* Phone Screen*/
 @media screen and (max-width: 600px) {
