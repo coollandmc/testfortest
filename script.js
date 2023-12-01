@@ -21,34 +21,36 @@ function toggleSettings() {
 let touchStartX = 0;
 let touchEndX = 0;
 
-// Add a touchstart event listener to record the starting position of the touch
 document.addEventListener('touchstart', function (event) {
     touchStartX = event.touches[0].clientX;
 }, false);
 
-// Add a touchmove event listener to continuously update the ending position of the touch
 document.addEventListener('touchmove', function (event) {
     touchEndX = event.touches[0].clientX;
 }, false);
 
-// Add a touchend event listener to determine the direction of the swipe
 document.addEventListener('touchend', function () {
+    const content = document.getElementById('content');
+
     if (touchStartX - touchEndX > 50) {
         // Swipe left, hide menu
-        hideMenu();
+        hideMenu(content);
     } else if (touchEndX - touchStartX > 50) {
         // Swipe right, show menu
-        showMenu();
+        showMenu(content);
     }
 });
 
-function hideMenu() {
+function hideMenu(content) {
     document.getElementById('menu').classList.add('transformed');
+    content.classList.add('content-transformed');
 }
 
-function showMenu() {
+function showMenu(content) {
     document.getElementById('menu').classList.remove('transformed');
+    content.classList.remove('content-transformed');
 }
+
 
 
 
