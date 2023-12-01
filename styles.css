@@ -88,13 +88,12 @@ body {
     border-radius: 10px; /* Add smooth edges */
 }
 
-#content {
-    margin-left: 300px;
-    padding: 20px;
-}
 
 #menu.transformed {
     transform: translateX(-150px);
+}
+#content {
+    transition: transform 0.3s ease; /* Add transition for smooth animation */
 }
 #content.content-transformed {
     transform: translateX(-100px);
