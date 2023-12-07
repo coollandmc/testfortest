@@ -1,4 +1,4 @@
-// Simulated array to store file information
+
 let filesArray = [];
 
 function uploadFile() {
