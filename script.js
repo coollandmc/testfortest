@@ -1,4 +1,4 @@
-
+// Simulated array to store file information
 let filesArray = [];
 
 function uploadFile() {
@@ -26,10 +26,15 @@ function uploadFile() {
         const virusCheck = document.createElement('p');
         // You can implement virus check functionality here
 
+        const downloadButton = document.createElement('button');
+        downloadButton.innerText = 'Download';
+        downloadButton.addEventListener('click', () => downloadFile(file));
+
         fileItem.appendChild(fileName);
         fileItem.appendChild(fileSize);
         fileItem.appendChild(fileDescription);
         fileItem.appendChild(virusCheck);
+        fileItem.appendChild(downloadButton);
 
         fileList.appendChild(fileItem);
 
@@ -55,6 +60,11 @@ function fileListClick(event) {
 
         alert(`File Info:\nName: ${fileInfo.name}\nSize: ${formatBytes(fileInfo.size)}`);
     }
+}
+
+function downloadFile(file) {
+    // Simulated download functionality
+    alert(`Simulated Download: ${file.name}`);
 }
 
 function formatBytes(bytes, decimals = 2) {
