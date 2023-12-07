@@ -9,6 +9,7 @@ function uploadFile() {
 
         const fileItem = document.createElement('div');
         fileItem.classList.add('file-item');
+        fileItem.setAttribute('data-file-name', file.name);
 
         const fileName = document.createElement('p');
         fileName.innerText = `Name: ${file.name}`;
@@ -34,6 +35,16 @@ function uploadFile() {
     fileInput.value = '';
 }
 
+function fileListClick(event) {
+    const clickedElement = event.target;
+    
+    if (clickedElement.classList.contains('file-item')) {
+        const fileName = clickedElement.getAttribute('data-file-name');
+        // You can implement functionality to open/view the file here
+        alert(`You clicked on: ${fileName}`);
+    }
+}
+
 function formatBytes(bytes, decimals = 2) {
     if (bytes === 0) return '0 Bytes';
 
@@ -45,4 +56,3 @@ function formatBytes(bytes, decimals = 2) {
 
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
-
