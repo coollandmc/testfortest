@@ -1,124 +1,30 @@
 body {
-    background-color: black; /* Default dark mode */
-    color: white;
-    font-family: Kanit, sans-serif;
-    margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
+    margin: 20px;
 }
 
-#button-home:hover,
-#button-events:hover {
-    background-color: #555; /* Change the color to your desired hover color */
-    cursor: pointer;
+#upload-container {
+    margin-bottom: 20px;
 }
 
+#file-list {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-#header {
-    text-align: right;
+.file-item {
+    border: 1px solid #ccc;
+    margin: 10px;
     padding: 10px;
+    width: 200px;
 }
-#button-home,
-#button-events {
-    margin-left: -30px; /* Move the buttons 30 pixels to the left */
-    background-color: #42413e;
-}
-.header-button,
-.lime-background {
-    align-items: end;
-    margin-left: 10px;
+
+.file-item img {
+    max-width: 100%;
+    max-height: 100px;
     margin-bottom: 10px;
-    padding: 10px;
-    background-color: #42413e;
-    color: white;
-    text-decoration: none;
-    border-radius: 15px;
-    display: inline-block;
-}
-.lime-background:hover{
-    background-color: #555; /* Change the color to your desired hover color */
-    cursor: pointer;
-}
-#menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 150px;
-    height: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-    z-index: 1;
-    transition: transform 0.3s ease; /* Add transition for smooth animation */
 }
 
-#content {
-    margin-left: 200px;
-    padding: 20px;
-}
-
-#home {
-    display: block;
-}
-
-#coolland-smp,
-#coolland-events {
-    display: none;
-}
-
-#settings-icon {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    cursor: pointer;
-    font-size: 20px;
-    z-index: 3;
-}
-
-#settings-popup {
-    display: none;
-    position: fixed;
-    bottom: 50px;
-    left: 10px;
-    background-color: #f0f0f0; /* Light gray color */
-    padding: 10px;
-    color: black;
-    z-index: 2;
-    border-radius: 10px; /* Add smooth edges */
-}
-
-
-#menu.transformed {
-    transform: translateX(-150px);
-}
-#content {
-    transition: transform 0.3s ease; /* Add transition for smooth animation */
-}
-#content.content-transformed {
-    transform: translateX(-100px);
-    transition: transform 0.3s ease; /* Add transition for smooth animation */
-}
-
-/* Phone Screen*/
-@media screen and (max-width: 600px) {
-    #content {
-        margin-left: 115px;
-    }
-#menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 100%;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-    z-index: 1;
-    transition: transform 0.3s ease; /* Add transition for smooth animation */
-}
 #button-home,
 #button-events {
     margin-left: -60px;
