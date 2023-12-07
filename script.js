@@ -1,3 +1,6 @@
+// Simulated array to store file information
+let filesArray = [];
+
 function uploadFile() {
     const fileInput = document.getElementById('file-input');
     const fileList = document.getElementById('file-list');
@@ -9,7 +12,7 @@ function uploadFile() {
 
         const fileItem = document.createElement('div');
         fileItem.classList.add('file-item');
-        fileItem.setAttribute('data-file-name', file.name);
+        fileItem.setAttribute('data-file-index', filesArray.length);
 
         const fileName = document.createElement('p');
         fileName.innerText = `Name: ${file.name}`;
@@ -29,6 +32,14 @@ function uploadFile() {
         fileItem.appendChild(virusCheck);
 
         fileList.appendChild(fileItem);
+
+        // Store file information in the simulated array
+        filesArray.push({
+            name: file.name,
+            size: file.size,
+            description: '', // Add description here if needed
+            virusCheck: '', // Add virus check info here if needed
+        });
     }
 
     // Clear the file input
@@ -37,11 +48,12 @@ function uploadFile() {
 
 function fileListClick(event) {
     const clickedElement = event.target;
-    
+
     if (clickedElement.classList.contains('file-item')) {
-        const fileName = clickedElement.getAttribute('data-file-name');
-        // You can implement functionality to open/view the file here
-        alert(`You clicked on: ${fileName}`);
+        const fileIndex = clickedElement.getAttribute('data-file-index');
+        const fileInfo = filesArray[fileIndex];
+
+        alert(`File Info:\nName: ${fileInfo.name}\nSize: ${formatBytes(fileInfo.size)}`);
     }
 }
 
