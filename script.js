@@ -1,89 +1,48 @@
-function initializePage() {
-    document.getElementById('home').style.display = 'block';
-    document.getElementById('coolland-events').style.display = 'none';
-}
+function uploadFile() {
+    const fileInput = document.getElementById('file-input');
+    const fileList = document.getElementById('file-list');
 
-function showHome() {
-    document.getElementById('home').style.display = 'block';
-    document.getElementById('coolland-events').style.display = 'none';
-}
+    const files = fileInput.files;
 
-function showEvents() {
-    document.getElementById('home').style.display = 'none';
-    document.getElementById('coolland-events').style.display = 'block';
-}
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
 
-function toggleSettings() {
-    var settingsPopup = document.getElementById('settings-popup');
-    settingsPopup.style.display = (settingsPopup.style.display === 'block') ? 'none' : 'block';
-}
+        const fileItem = document.createElement('div');
+        fileItem.classList.add('file-item');
 
-let touchStartX = 0;
-let touchEndX = 0;
+        const fileName = document.createElement('p');
+        fileName.innerText = `Name: ${file.name}`;
 
-document.addEventListener('touchstart', function (event) {
-    touchStartX = event.touches[0].clientX;
-}, false);
+        const fileSize = document.createElement('p');
+        fileSize.innerText = `Size: ${formatBytes(file.size)}`;
 
-document.addEventListener('touchmove', function (event) {
-    touchEndX = event.touches[0].clientX;
-}, false);
+        const fileDescription = document.createElement('p');
+        // You can add a description input field and set the value here
 
-document.addEventListener('touchend', function () {
-    const content = document.getElementById('content');
+        const virusCheck = document.createElement('p');
+        // You can implement virus check functionality here
 
-    if (touchStartX - touchEndX > 50) {
-        // Swipe left, hide menu
-        hideMenu(content);
-    } else if (touchEndX - touchStartX > 50) {
-        // Swipe right, show menu
-        showMenu(content);
+        fileItem.appendChild(fileName);
+        fileItem.appendChild(fileSize);
+        fileItem.appendChild(fileDescription);
+        fileItem.appendChild(virusCheck);
+
+        fileList.appendChild(fileItem);
     }
-});
 
-function hideMenu(content) {
-    document.getElementById('menu').classList.add('transformed');
-    content.classList.add('content-transformed');
+    // Clear the file input
+    fileInput.value = '';
 }
 
-function showMenu(content) {
-    document.getElementById('menu').classList.remove('transformed');
-    content.classList.remove('content-transformed');
+function formatBytes(bytes, decimals = 2) {
+    if (bytes === 0) return '0 Bytes';
+
+    const k = 1024;
+    const dm = decimals < 0 ? 0 : decimals;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
-
-
-
-function changeTheme() {
-    var theme = document.getElementById('theme').value;
-    document.body.style.backgroundColor = (theme === 'dark') ? 'black' : 'white';
-    document.body.style.color = (theme === 'dark') ? 'white' : 'black';
-    
-    // Save the theme preference to localStorage
-    localStorage.setItem('theme', theme);
-    
-}
-
-// Check if a theme preference is saved in localStorage
-var savedTheme = localStorage.getItem('theme');
-if (savedTheme) {
-    // Apply the saved theme
-    document.getElementById('theme').value = savedTheme;
-    changeTheme();
-}
-
-// Switch to light theme when the page is about to be unloaded
-window.addEventListener('beforeunload', function () {
-    if (document.getElementById('theme').value !== 'dark') {
-        document.body.style.backgroundColor = 'white';
-        document.body.style.color = 'black';
-    }
-});
-
-//phone
-document.getElementById('button-home').addEventListener('click', showHome);
-document.getElementById('button-events').addEventListener('click', showEvents);
-document.getElementById('button-home').addEventListener('touchend', showHome);
-document.getElementById('button-events').addEventListener('touchend', showEvents);
-
-window.onload = initializePage;
