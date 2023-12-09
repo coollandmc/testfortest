@@ -1,5 +1,4 @@
 <?php
-// Check if a file was uploaded
 if ($_FILES['file']['error'] === 0) {
     // Define the upload directory
     $uploadDir = 'uploads/';
