@@ -3,28 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
     <title>File Hosting</title>
 </head>
 <body>
-    <h1>File Hosting</h1>
-
-    <!-- File Upload Form -->
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <label for="file">Choose a file (up to 1GB): </label>
-        <input type="file" name="file" id="file" required>
-        <button type="submit">Upload</button>
-    </form>
-
-    <!-- List of Uploaded Files -->
-    <h2>Uploaded Files:</h2>
-    <ul>
-        <?php
-        // PHP code to list uploaded files
-        $files = glob('uploads/*');
-        foreach ($files as $file) {
-            echo "<li><a href=\"$file\" download>" . basename($file) . "</a></li>";
-        }
-        ?>
-    </ul>
+    <div class="container">
+        <h1>File Hosting</h1>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput" accept=".zip, .rar, .txt, .pdf, .doc, .docx">
+            <button type="button" onclick="uploadFile()">Upload File</button>
+        </form>
+        <div id="fileList"></div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
+
