@@ -1,25 +1,22 @@
 <?php
-if ($_FILES['file']['error'] === 0) {
-    // Define the upload directory
-    $uploadDir = 'uploads/';
 
-    // Create the directory if it doesn't exist
-    if (!file_exists($uploadDir)) {
-        mkdir($uploadDir, 0777, true);
-    }
+$uploadDir = 'uploads/';
 
-    // Generate a unique filename
-    $filename = $uploadDir . uniqid() . '_' . basename($_FILES['file']['name']);
+if (!file_exists($uploadDir)) {
+    mkdir($uploadDir, 0777, true);
+}
 
-    // Move the uploaded file to the specified directory
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $filename)) {
-        // Redirect to the main page after successful upload
-        header('Location: index.html');
-        exit;
+if ($_FILES['file']['error'] === UPLOAD_ERR_OK) {
+    $fileName = basename($_FILES['file']['name']);
+    $filePath = $uploadDir . $fileName;
+
+    if (move_uploaded_file($_FILES['file']['tmp_name'], $filePath)) {
+        echo json_encode(['success' => true]);
     } else {
-        echo 'Error uploading the file.';
+        echo json_encode(['success' => false]);
     }
 } else {
-    echo 'Error: ' . $_FILES['file']['error'];
+    echo json_encode(['success' => false]);
 }
+
 ?>
